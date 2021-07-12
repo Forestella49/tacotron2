@@ -34,6 +34,7 @@ from text.korean import tokenize
 from text import text_to_sequence, sequence_to_text
 from datasets.datafeeder_tacotron2 import _prepare_inputs
 import warnings
+from VocGAN.zz import hi
 
 warnings.simplefilter(action='ignore', category=FutureWarning)
 tf.logging.set_verbosity(tf.logging.ERROR)
@@ -350,8 +351,7 @@ if __name__ == "__main__":
                                    attention_trim=True, base_alignment_path=config.base_alignment_path,
                                    isKorean=config.is_korean)[0]
 
-    ## from vocgan.zz import hi
-
+    hi("/content/drive/MyDrive/logdir-tacotron2/moon_2021-02-18_08-05-15", mels)
 
 
 
