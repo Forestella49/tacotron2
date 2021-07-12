@@ -160,7 +160,7 @@ class Synthesizer(object):
             else:
                 feed_dict[self.model.speaker_id] = speaker_ids
 
-        wavs, alignments, mels = self.sess.run(fetches, feed_dict=feed_dict
+        wavs, alignments, mels = self.sess.run(fetches, feed_dict=feed_dict)
 
         return mels
 
