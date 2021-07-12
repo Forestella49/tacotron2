@@ -26,6 +26,7 @@ def hi(checkpoint_path,input,d=True):
         mel = torch.from_numpy(input)
         if len(mel.shape) == 2:
             mel = mel.unsqueeze(0)
+        mel = np.transpose(mel, (0,2,1))
         mel = mel.cuda()
         audio = model.inference(mel)
 
