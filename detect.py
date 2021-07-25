@@ -79,7 +79,7 @@ def img2char(img_ori):
   chars = pytesseract.image_to_string(img_thresh, lang='kor', config='--psm 4 --oem 3')
   chars = re.sub('[^가-힣|\n| |0-9]+','',chars)
   x =[]
-    for i in chars.split('\n'):
-      if len(i)>2:
-        x.append(i)
+  for i in chars.split('\n'):
+    if len(i)>2:
+      x.append(i)
   return x
