@@ -2,6 +2,7 @@ from detect import img2char
 from syn_mod import Synthesizer
 import cv2
 from utils.audio import save_wav
+import numpy as np
 
 if __name__=="__main__":
   img = cv2.imread(r'C:\Users\김규림\pythonProject\tacotron2\test2.PNG')#이미지 루트
@@ -13,12 +14,12 @@ if __name__=="__main__":
   speaker_id = 0
   base_alignment_path = None
   is_korean = True
-  for text in texts:
-    synthesizer = Synthesizer()
+
   synthesizer.load(load_path,num_speakers,checkpoint_step,inference_prenet_dropout=False)
+  audio = np.zeros(1)
   for text in texts:
-      audio = np.append(audio,Synthesizer.Synthesize(texts=[text],base_path=config.sample_path,speaker_ids=[config.speaker_id],
-                                   attention_trim=True,base_alignment_path=config.base_alignment_path,isKorean=config.is_korean))
+      audio = np.append(audio,synthesizer.Synthesize(texts=[text],base_path=sample_path,speaker_ids=[speaker_id],
+                                   attention_trim=True,base_alignment_path=base_alignment_path,isKorean=is_korean))
       audio = np.append(audio,np.zeros(5000))
     
-  save_wav(audio,'/content/hi.wav',24000)
+  save_wav(audio,'/content/hi.wav',16000)
