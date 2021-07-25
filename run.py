@@ -14,9 +14,9 @@ if __name__=="__main__":
   speaker_id = 0
   base_alignment_path = None
   is_korean = True
-
-  synthesizer.load(load_path,num_speakers,checkpoint_step,inference_prenet_dropout=False)
   audio = np.zeros(1)
+  synthesizer.load(load_path,num_speakers,checkpoint_step,inference_prenet_dropout=False)
+  synthesizer = Synthesizer()
   for text in texts:
       audio = np.append(audio,synthesizer.Synthesize(texts=[text],base_path=sample_path,speaker_ids=[speaker_id],
                                    attention_trim=True,base_alignment_path=base_alignment_path,isKorean=is_korean))
